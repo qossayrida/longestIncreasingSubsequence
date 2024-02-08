@@ -19,15 +19,8 @@ public class RandomDataScene extends Scene {
 	    ScrollPane layout = (ScrollPane) getRoot();
 	    // Apply CSS stylesheet for styling components.
 	    layout.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
-	    // Create a StackPane for background and content.
-	    StackPane stackPane = new StackPane();
-	    // Set up a background image.
-	    Image backgroundImage = new Image("file:4.jpg");
-	    ImageView backgroundImageView = new ImageView(backgroundImage);
-	    backgroundImageView.fitWidthProperty().bind(stackPane.widthProperty());
-	    backgroundImageView.fitHeightProperty().bind(stackPane.heightProperty());
-
+		layout.getStyleClass().add("root");
+		
 	    // Create and style title label.
 	    Label titleLabel = new Label("Generate random data");
 	    titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 25));
@@ -65,8 +58,15 @@ public class RandomDataScene extends Scene {
 	    vBox.setAlignment(Pos.TOP_CENTER);
 	    vBox.getChildren().addAll(titleLabel, readNHBox, gridPaneFields, createControlSceneHBox());
 
-	    // Add background image and VBox to StackPane.
-	    stackPane.getChildren().addAll(backgroundImageView, vBox);
+	    // Create a StackPane for background and content.
+	    StackPane stackPane = new StackPane();
+	    Image backgroundImage = new Image(getClass().getResourceAsStream("/pictures/background.jpg"));
+        ImageView backgroundImageView = new ImageView(backgroundImage);
+        backgroundImageView.fitWidthProperty().bind(stackPane.widthProperty());
+        backgroundImageView.fitHeightProperty().bind(stackPane.heightProperty());
+
+        // Add the background image and VBox to the StackPane.
+        stackPane.getChildren().addAll(backgroundImageView, vBox);
 	    stackPane.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth());
 	    stackPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight());
 	    // Set StackPane as the content of the layout.
@@ -123,7 +123,7 @@ public class RandomDataScene extends Scene {
 	private HBox createControlSceneHBox() {
 	    // Create submit button with image and styling.
 	    Button submitButton = new Button("Submit");
-	    submitButton.setGraphic(new ImageView(new Image("file:submit.png")));
+	    submitButton.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/submit.png"))));
 	    submitButton.setContentDisplay(ContentDisplay.RIGHT);
 	    submitButton.getStyleClass().add("custom-button");
 	    submitButton.setPrefWidth(150);
@@ -138,7 +138,7 @@ public class RandomDataScene extends Scene {
 
 	    // Create return button with image and styling.
 	    Button returnButton = new Button("Back");
-	    returnButton.setGraphic(new ImageView(new Image("file:reply.png")));
+	    returnButton.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/reply.png"))));
 	    returnButton.getStyleClass().add("custom-button");
 	    returnButton.setPrefWidth(150);
 	    returnButton.setPrefHeight(50);

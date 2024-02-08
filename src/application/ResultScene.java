@@ -25,6 +25,7 @@ public class ResultScene extends Scene {
         StackPane layout = (StackPane) getRoot();
         // Add a CSS stylesheet to the layout
         layout.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		layout.getStyleClass().add("root");
 
         // Initialize instance variables
         this.LEDs = LEDs;
@@ -35,12 +36,6 @@ public class ResultScene extends Scene {
         // Initialize the values for DP and connections
         initializeValues();
 
-        // Create and configure background image view
-        Image backgroundImage = new Image("file:4.jpg");
-        ImageView backgroundImageView = new ImageView(backgroundImage);
-        backgroundImageView.fitWidthProperty().bind(layout.widthProperty());
-        backgroundImageView.fitHeightProperty().bind(layout.heightProperty());
-
         // Create and configure welcome label
         Label welcomeLabel = new Label("Results");
         welcomeLabel.setFont(Font.font("Century Gothic", FontWeight.BOLD, 30));
@@ -50,7 +45,8 @@ public class ResultScene extends Scene {
         Label doneCorrectlyLabel = new Label("The number of LEDs that can be connected equal " + DP[numberPowerSource][numberPowerSource] + "  ");
         doneCorrectlyLabel.setFont(Font.font("Century Gothic", 20));
         doneCorrectlyLabel.setStyle("-fx-text-fill: #000000;");
-        doneCorrectlyLabel.setGraphic(new ImageView(new Image("file:verification.png")));
+        doneCorrectlyLabel.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/verification.png"))));
+        
         doneCorrectlyLabel.setContentDisplay(ContentDisplay.RIGHT);
 
         // Create an array of button labels
@@ -81,7 +77,7 @@ public class ResultScene extends Scene {
         vBox.getChildren().addAll(welcomeLabel, doneCorrectlyLabel, ArrangementButtons);
 
         // Add background image and VBox to the layout
-        layout.getChildren().addAll(backgroundImageView, vBox);
+        layout.getChildren().addAll(vBox);
     }
 
     // Initialize values for DP and connections
@@ -127,7 +123,7 @@ public class ResultScene extends Scene {
         buttons[4].setOnAction(e -> handleShowAnotherSolution());
         
         // Set a graphic (an image) for the fifth button and an action to switch scenes
-        buttons[5].setGraphic(new ImageView(new Image("file:reply.png")));
+        buttons[5].setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/reply.png"))));
         buttons[5].setOnAction(e -> SceneManager.setMainScene());
     }
 
@@ -251,11 +247,14 @@ public class ResultScene extends Scene {
                 } else {
                     int value = (int) MyCollection.getTwoBits(source[i], j);
                     if (value == 2)
-                        label.setGraphic(new ImageView(new Image("file:diagonal.png")));
+                        label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/diagonal.png"))));
                     else if (value == 1)
-                        label.setGraphic(new ImageView(new Image("file:up.png")));
+                        label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/up.png"))));
                     else 
-                        label.setGraphic(new ImageView(new Image("file:right.png")));
+                        label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/right.png"))));
+                    
+                    
+                    
                     
                     // Create a tooltip to show the location when the label is clicked
                     Tooltip tooltip = new Tooltip("(" + i + "," + LEDs[j - 1] + ")");
@@ -322,15 +321,17 @@ public class ResultScene extends Scene {
             Label label = new Label("Power source No. " + i);
             label.setContentDisplay(ContentDisplay.RIGHT);
             if (MyCollection.checkIfExists(connections, i)) {
-                label.setGraphic(new ImageView(new Image("file:PowerSourceOn.png")));
+                label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/PowerSourceOn.png"))));
                 powerSourcesOn[count++] = label;
             } else {
-                label.setGraphic(new ImageView(new Image("file:PowerSourceOff.png")));
+                label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/PowerSourceOff.png"))));
             }
             label.setFont(Font.font("Verdana", 13.5));
             label.setStyle("-fx-text-fill: #FFFFFF;");
             circuitS.getChildren().add(label);
         }
+        
+        
 
         // Set alignment, styles, and dimensions for Circuit S VBox
         circuitS.setAlignment(Pos.TOP_CENTER);
@@ -352,11 +353,14 @@ public class ResultScene extends Scene {
         for (int i = 0; i < numberPowerSource; i++) {
             Label label = new Label("LED No. " + LEDs[i]);
             if (MyCollection.checkIfExists(connections, LEDs[i])) {
-                label.setGraphic(new ImageView(new Image("file:ledOn.png")));
+                label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/ledOn.png"))));
                 LEDsOn[count++] = label;
             } else {
-                label.setGraphic(new ImageView(new Image("file:ledOff.png")));
+                label.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/ledOff.png"))));
             }
+            
+            
+            
             label.setFont(Font.font("Verdana", 13.5));
             label.setStyle("-fx-text-fill: #FFFFFF;");
             circuitL.getChildren().add(label);
@@ -419,12 +423,13 @@ public class ResultScene extends Scene {
             line.setStyle("-fx-stroke: #D9AD2B ; -fx-stroke-width: 2;");
 
             // Create and position images to indicate the connection
-            Image image = new Image("file:q.png");
+            Image image = new Image(getClass().getResourceAsStream("/pictures/q.png"));
+            
             ImageView imageView = new ImageView(image);
             imageView.setLayoutX(120);
             imageView.setLayoutY(endY - 10);
 
-            Image image1 = new Image("file:w.png");
+            Image image1 = new Image(getClass().getResourceAsStream("/pictures/w.png"));
             ImageView imageView1 = new ImageView(image1);
             imageView1.setLayoutX(0);
             imageView1.setLayoutY(startY - 10);

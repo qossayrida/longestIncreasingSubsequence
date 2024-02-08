@@ -18,6 +18,7 @@ public class ManualDataScene extends Scene {
         ScrollPane layout = (ScrollPane) getRoot();
         // Add CSS stylesheet for styling the components.
         layout.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		layout.getStyleClass().add("root");
 
         // Create a label for the title with specific font settings.
         Label titelLabel = new Label("Manual data entry");
@@ -58,13 +59,12 @@ public class ManualDataScene extends Scene {
         
         // Create a StackPane to layer the background image and VBox.
         StackPane stackPane = new StackPane();
-        Image backgroundImage = new Image("file:4.jpg");
+        Image backgroundImage = new Image(getClass().getResourceAsStream("/pictures/background.jpg"));
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(stackPane.widthProperty());
         backgroundImageView.fitHeightProperty().bind(stackPane.heightProperty());
-
         // Add the background image and VBox to the StackPane.
-        stackPane.getChildren().addAll(backgroundImageView, vBox);
+        stackPane.getChildren().addAll(backgroundImageView,vBox);
         stackPane.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth());
         stackPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight());
         
@@ -103,7 +103,8 @@ public class ManualDataScene extends Scene {
     private HBox createControlSceneHBox() {
         // Create a submit button with an image and styling.
         Button submitButton = new Button("Submit");
-        submitButton.setGraphic(new ImageView(new Image("file:submit.png")));
+        submitButton.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/submit.png"))));
+        
         submitButton.setContentDisplay(ContentDisplay.RIGHT);
         submitButton.getStyleClass().add("custom-button");
         submitButton.setPrefWidth(150);
@@ -112,7 +113,7 @@ public class ManualDataScene extends Scene {
 
         // Create a return button with an image and styling.
         Button returnButton = new Button("Back");
-        returnButton.setGraphic(new ImageView(new Image("file:reply.png")));
+        returnButton.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/pictures/reply.png"))));
         returnButton.getStyleClass().add("custom-button");
         returnButton.setPrefWidth(150);
         returnButton.setPrefHeight(45);

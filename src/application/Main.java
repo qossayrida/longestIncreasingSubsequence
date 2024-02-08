@@ -18,7 +18,7 @@ public class Main extends Application {
 
 		// Configure and display the primary stage.
 	    primaryStage.setTitle("Project1");
-	    primaryStage.getIcons().add(new Image("file:icon.png"));
+	    primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/pictures/icon.png")));
 	    primaryStage.setMaximized(true);
 	    primaryStage.show();
 	}

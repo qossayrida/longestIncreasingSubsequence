@@ -5,7 +5,6 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.geometry.*;         
 import javafx.scene.control.*;
-import javafx.scene.image.*;
 import javafx.scene.text.*;
 
 import java.io.*;
@@ -19,18 +18,13 @@ public class MainScene extends Scene {
         super(new StackPane(), Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight());
         StackPane layout = (StackPane) getRoot();
         layout.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		layout.getStyleClass().add("root");
         
         // Set up the main layout using a VBox.
         VBox vBox = new VBox(60);
         vBox.setPadding(new Insets(60));
         vBox.setAlignment(Pos.TOP_CENTER);
     	
-    	// Set up a background image for the scene.
-        Image backgroundImage = new Image("file:4.jpg");
-        ImageView backgroundImageView = new ImageView(backgroundImage);
-        backgroundImageView.fitWidthProperty().bind(layout.widthProperty());
-        backgroundImageView.fitHeightProperty().bind(layout.heightProperty());
-
         // Set up a welcome label.
         Label welcomeLabel = new Label("Welcome");
         welcomeLabel.setFont(Font.font("Century Gothic", FontWeight.BOLD, 40));
@@ -56,7 +50,7 @@ public class MainScene extends Scene {
         
         // Add components to the main layout.
         vBox.getChildren().addAll(welcomeLabel, ArrangementButtons);
-        layout.getChildren().addAll(backgroundImageView, vBox);
+        layout.getChildren().addAll(vBox);
     }
     
     // Method to set up buttons with labels and actions.

@@ -9,3 +9,8 @@
     -fx-border-color: #333333;
     -fx-border-width: 3;
 }
+
+.root {
+    /* Gradient background from #1e90ff at the top to #FcBFFf at the bottom */
+    -fx-background-color: linear-gradient(from 0% 20% to 0% 100%, #1e90ff, #FFBFFf);
+}
