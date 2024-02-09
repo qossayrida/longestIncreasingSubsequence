@@ -8,10 +8,16 @@ Upon launching the application, you will be greeted with the Welcome Screen. Her
   <img width="720" height="405" src="https://github.com/QossayRidi/longestIncreasingSubsequence/assets/59481839/f54c335d-f2c3-4263-80b8-d5033f17d7a0">
 </p>
 
-**Upload data from text file:** 
+***Upload data from text file:***
+
 Selecting Upload data from text file will open a file dialog where you can choose a text file from your computer that contains the data in this format 
+<p align="center">
+  <img width="414" height="162" src="https://github.com/QossayRidi/longestIncreasingSubsequence/assets/59481839/96d3485f-b86b-4f3c-b11e-ed33e96b332e">
+</p>
 
 **Enter data manually:** 
+
+you'll be prompted to input the number of power sources and then assign an LED to each power source.
 
 **Generate random data:** 
 
