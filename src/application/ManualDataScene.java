@@ -59,12 +59,9 @@ public class ManualDataScene extends Scene {
         
         // Create a StackPane to layer the background image and VBox.
         StackPane stackPane = new StackPane();
-        Image backgroundImage = new Image(getClass().getResourceAsStream("/pictures/background.jpg"));
-        ImageView backgroundImageView = new ImageView(backgroundImage);
-        backgroundImageView.fitWidthProperty().bind(stackPane.widthProperty());
-        backgroundImageView.fitHeightProperty().bind(stackPane.heightProperty());
+        stackPane.getStyleClass().add("root");
         // Add the background image and VBox to the StackPane.
-        stackPane.getChildren().addAll(backgroundImageView,vBox);
+        stackPane.getChildren().addAll(vBox);
         stackPane.setPrefWidth(Screen.getPrimary().getVisualBounds().getWidth());
         stackPane.setPrefHeight(Screen.getPrimary().getVisualBounds().getHeight());
         
