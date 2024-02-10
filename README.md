@@ -2,6 +2,7 @@
 
 This project implements a dynamic programming approach to solve the Max LED Lighting problem, where the goal is to connect LEDs on one circuit board to power sources on another in a manner that maximizes the number of lit LEDs without any wires crossing. This problem involves finding the optimal pairings of LEDs to power sources given a specific arrangement.
 
+
 ## How to use
 Upon launching the application, you will be greeted with the Welcome Screen. Here you can choose to 
 <p align="center">
